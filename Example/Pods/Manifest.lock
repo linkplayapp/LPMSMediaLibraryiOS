@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - LPMSMediaLibraryiOS (0.1.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - LPMSMediaLibraryiOS (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  LPMSMediaLibraryiOS:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  LPMSMediaLibraryiOS: 3e443f8bc3e1606cd430bed2416cd307cb3f8ba6
+
+PODFILE CHECKSUM: 022564707429947a188af920c11df9bc1ff062a3
+
+COCOAPODS: 1.8.4

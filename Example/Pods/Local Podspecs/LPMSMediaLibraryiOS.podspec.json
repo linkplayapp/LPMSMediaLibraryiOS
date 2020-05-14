@@ -1,0 +1,22 @@
+{
+  "name": "LPMSMediaLibraryiOS",
+  "version": "0.1.0",
+  "summary": "A short description of LPMSMediaLibraryiOS.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/675744097@qq.com/LPMSMediaLibraryiOS",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "675744097@qq.com": "yu.sun@linkplay.com"
+  },
+  "source": {
+    "git": "https://github.com/675744097@qq.com/LPMSMediaLibraryiOS.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "LPMSMediaLibraryiOS/Classes/**/*"
+}
