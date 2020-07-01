@@ -1,9 +1,18 @@
 # LPMSMediaLibraryiOS
 
-[![CI Status](https://img.shields.io/travis/675744097@qq.com/LPMSMediaLibraryiOS.svg?style=flat)](https://travis-ci.org/675744097@qq.com/LPMSMediaLibraryiOS)
-[![Version](https://img.shields.io/cocoapods/v/LPMSMediaLibraryiOS.svg?style=flat)](https://cocoapods.org/pods/LPMSMediaLibraryiOS)
-[![License](https://img.shields.io/cocoapods/l/LPMSMediaLibraryiOS.svg?style=flat)](https://cocoapods.org/pods/LPMSMediaLibraryiOS)
-[![Platform](https://img.shields.io/cocoapods/p/LPMSMediaLibraryiOS.svg?style=flat)](https://cocoapods.org/pods/LPMSMediaLibraryiOS)
+[English](README.md) | [中文](README_zh.md)
+
+LPMSMediaLibrary is the app side SDK for Linkplay iPhone media library access solution；you can use it to quickly play music from iPhone media library  to your products.
+
+LPMSMediaLibrary mainly provides two functions：
+
+- Show music in iPhone media library.
+
+- Play music from iPhone media library to your product.
+
+## Documentation
+
+You can find documentation [on the website](https://linkplayapp.github.io/linkplay_sdk_doc/en/).
 
 ## Example
 
@@ -13,17 +22,22 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-LPMSMediaLibraryiOS is available through [CocoaPods](https://cocoapods.org). To install
+LPMSMediaLibrary is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'LPMSMediaLibraryiOS'
+platform :ios, '10.0'
+# Private Spec, install data processing SDK
+source 'https://github.com/linkplayapp/LPSpecsiOS.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'your_target_name' do
+
+   pod "LPMSMediaLibraryiOS", :git => "https://github.com/linkplayapp/LPMSMediaLibraryiOS.git"
+
+end
 ```
 
 ## Author
 
-675744097@qq.com, yu.sun@linkplay.com
-
-## License
-
-LPMSMediaLibraryiOS is available under the MIT license. See the LICENSE file for more info.
+LinkPlay, ios_team@linkplay.com
