@@ -30,6 +30,7 @@ TODO: SDK contains the number of local songs, singers and albums.
 
   s.ios.deployment_target = '9.0'
 
+  s.static_framework = true
   s.frameworks = 'AVFoundation','MediaPlayer'
   s.dependency 'LPMDPKitiOS'
   s.resources = 'LPMSMediaLibraryiOS/Resource/*'
