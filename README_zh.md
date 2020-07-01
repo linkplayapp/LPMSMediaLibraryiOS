@@ -24,7 +24,7 @@ LPMSMediaLibrary主要解决了两方面的问题：
 
 ## 安装
 
-LPMusicKitiOS 可以通过 [CocoaPods](https://cocoapods.org) 安装. 将下面的代码添加到您的pod文件里即可：
+LPMSMediaLibraryiOS 可以通过 [CocoaPods](https://cocoapods.org) 安装. 将下面的代码添加到您的pod文件里即可：
 
 ```ruby
 platform :ios, '10.0'
