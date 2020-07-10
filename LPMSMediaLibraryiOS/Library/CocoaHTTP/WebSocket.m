@@ -1,6 +1,6 @@
 #import "WebSocket.h"
 #import "HTTPMessage.h"
-#import "GCDAsyncSocket.h"
+#import "LPGCDAsyncSocket.h"
 #import "DDNumber.h"
 #import "DDData.h"
 #import "HTTPLogging.h"
@@ -155,7 +155,7 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 
 @synthesize websocketQueue;
 
-- (id)initWithRequest:(HTTPMessage *)aRequest socket:(GCDAsyncSocket *)socket
+- (id)initWithRequest:(HTTPMessage *)aRequest socket:(LPGCDAsyncSocket *)socket
 {
 	HTTPLogTrace();
 	
@@ -581,7 +581,7 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 		[data appendBytes:"\xFF" length:1];
 	}
 	
-	// Remember: GCDAsyncSocket is thread-safe
+	// Remember: LPGCDAsyncSocket is thread-safe
 	
 	[asyncSocket writeData:data withTimeout:TIMEOUT_NONE tag:0];
 }
@@ -657,7 +657,7 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 // |                     Payload Data continued ...                |
 // +---------------------------------------------------------------+
 
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+- (void)socket:(LPGCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
 	HTTPLogTrace();
 	
@@ -781,7 +781,7 @@ static inline NSUInteger WS_PAYLOAD_LENGTH(UInt8 frame)
 	}
 }
 
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)error
+- (void)socketDidDisconnect:(LPGCDAsyncSocket *)sock withError:(NSError *)error
 {
 	HTTPLogTrace2(@"%@[%p]: socketDidDisconnect:withError: %@", THIS_FILE, self, error);
 	

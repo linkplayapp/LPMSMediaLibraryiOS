@@ -1,4 +1,4 @@
-#import "GCDAsyncSocket.h"
+#import "LPGCDAsyncSocket.h"
 #import "HTTPServer.h"
 #import "HTTPConnection.h"
 #import "HTTPMessage.h"
@@ -174,7 +174,7 @@ static NSMutableArray *recentNonces;
  * Associates this new HTTP connection with the given AsyncSocket.
  * This HTTP connection object will become the socket's delegate and take over responsibility for the socket.
 **/
-- (id)initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig
+- (id)initWithAsyncSocket:(LPGCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig
 {
 	if ((self = [super init]))
 	{
@@ -639,7 +639,7 @@ static NSMutableArray *recentNonces;
 {
 	HTTPLogTrace();
 	
-	[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+	[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 	                withTimeout:TIMEOUT_READ_FIRST_HEADER_LINE
 	                  maxLength:MAX_HEADER_LINE_LENGTH
 	                        tag:HTTP_REQUEST_HEADER];
@@ -1250,7 +1250,7 @@ static NSMutableArray *recentNonces;
 					}
 					else
 					{
-						NSData *footer = [GCDAsyncSocket CRLFData];
+						NSData *footer = [LPGCDAsyncSocket CRLFData];
 						[asyncSocket writeData:footer withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_CHUNKED_RESPONSE_FOOTER];
 					}
 				}
@@ -1389,7 +1389,7 @@ static NSMutableArray *recentNonces;
 			}
 			else
 			{
-				NSData *footer = [GCDAsyncSocket CRLFData];
+				NSData *footer = [LPGCDAsyncSocket CRLFData];
 				[asyncSocket writeData:footer withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_CHUNKED_RESPONSE_FOOTER];
 			}
 		}
@@ -1802,7 +1802,7 @@ static NSMutableArray *recentNonces;
 
 /**
  * Called if we receive some sort of malformed HTTP request.
- * The data parameter is the invalid HTTP header line, including CRLF, as read from GCDAsyncSocket.
+ * The data parameter is the invalid HTTP header line, including CRLF, as read from LPGCDAsyncSocket.
  * The data parameter may also be nil if the request as a whole was invalid, such as a POST with no Content-Length.
 **/
 - (void)handleInvalidRequest:(NSData *)data
@@ -2008,14 +2008,14 @@ static NSMutableArray *recentNonces;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark GCDAsyncSocket Delegate
+#pragma mark LPGCDAsyncSocket Delegate
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * This method is called after the socket has successfully read data from the stream.
  * Remember that this method will only be called after the socket reaches a CRLF, or after it's read the proper length.
 **/
-- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData*)data withTag:(long)tag
+- (void)socket:(LPGCDAsyncSocket *)sock didReadData:(NSData*)data withTag:(long)tag
 {
  	if (tag == HTTP_REQUEST_HEADER)
 	{
@@ -2042,7 +2042,7 @@ static NSMutableArray *recentNonces;
 			}
 			else
 			{
-				[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+				[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 				                withTimeout:TIMEOUT_READ_SUBSEQUENT_HEADER_LINE
 				                  maxLength:MAX_HEADER_LINE_LENGTH
 				                        tag:HTTP_REQUEST_HEADER];
@@ -2149,7 +2149,7 @@ static NSMutableArray *recentNonces;
 					{
 						// Chunked transfer
 						
-						[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+						[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 						                withTimeout:TIMEOUT_READ_BODY
 						                  maxLength:MAX_CHUNK_LINE_LENGTH
 						                        tag:HTTP_REQUEST_CHUNK_SIZE];
@@ -2237,7 +2237,7 @@ static NSMutableArray *recentNonces;
 				// This is the "0" (zero) line,
 				// which is to be followed by optional footers (just like headers) and finally a blank line.
 				
-				[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+				[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 				                withTimeout:TIMEOUT_READ_BODY
 				                  maxLength:MAX_HEADER_LINE_LENGTH
 				                        tag:HTTP_REQUEST_CHUNK_FOOTER];
@@ -2280,7 +2280,7 @@ static NSMutableArray *recentNonces;
 			// This should be the CRLF following the data.
 			// Just ensure it's a CRLF.
 			
-			if (![data isEqualToData:[GCDAsyncSocket CRLFData]])
+			if (![data isEqualToData:[LPGCDAsyncSocket CRLFData]])
 			{
 				HTTPLogWarn(@"%@[%p]: Method expects chunk trailer, but is missing", THIS_FILE, self);
 				
@@ -2290,7 +2290,7 @@ static NSMutableArray *recentNonces;
 			
 			// Now continue with the next chunk
 			
-			[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+			[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 			                withTimeout:TIMEOUT_READ_BODY
 			                  maxLength:MAX_CHUNK_LINE_LENGTH
 			                        tag:HTTP_REQUEST_CHUNK_SIZE];
@@ -2314,7 +2314,7 @@ static NSMutableArray *recentNonces;
 				// In the future we may want to append these to the request.
 				// For now we ignore, and continue reading the footers, waiting for the final blank line.
 				
-				[asyncSocket readDataToData:[GCDAsyncSocket CRLFData]
+				[asyncSocket readDataToData:[LPGCDAsyncSocket CRLFData]
 				                withTimeout:TIMEOUT_READ_BODY
 				                  maxLength:MAX_HEADER_LINE_LENGTH
 				                        tag:HTTP_REQUEST_CHUNK_FOOTER];
@@ -2362,7 +2362,7 @@ static NSMutableArray *recentNonces;
 /**
  * This method is called after the socket has successfully written data to the stream.
 **/
-- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
+- (void)socket:(LPGCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
 	BOOL doneSendingResponse = NO;
 	
@@ -2479,7 +2479,7 @@ static NSMutableArray *recentNonces;
 /**
  * Sent after the socket has been disconnected.
 **/
-- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
+- (void)socketDidDisconnect:(LPGCDAsyncSocket *)sock withError:(NSError *)err
 {
 	HTTPLogTrace();
 	

@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 @class HTTPMessage;
-@class GCDAsyncSocket;
+@class LPGCDAsyncSocket;
 
 
 #define WebSocketDidDieNotification  @"WebSocketDidDie"
@@ -11,7 +11,7 @@
 	dispatch_queue_t websocketQueue;
 	
 	HTTPMessage *request;
-	GCDAsyncSocket *asyncSocket;
+	LPGCDAsyncSocket *asyncSocket;
 	
 	NSData *term;
 	
@@ -24,7 +24,7 @@
 
 + (BOOL)isWebSocketRequest:(HTTPMessage *)request;
 
-- (id)initWithRequest:(HTTPMessage *)request socket:(GCDAsyncSocket *)socket;
+- (id)initWithRequest:(HTTPMessage *)request socket:(LPGCDAsyncSocket *)socket;
 
 /**
  * Delegate option.

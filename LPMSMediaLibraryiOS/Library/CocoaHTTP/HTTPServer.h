@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@class GCDAsyncSocket;
+@class LPGCDAsyncSocket;
 @class WebSocket;
 
 #if TARGET_OS_IPHONE
@@ -21,7 +21,7 @@
 @interface HTTPServer : NSObject IMPLEMENTED_PROTOCOLS
 {
 	// Underlying asynchronous TCP/IP socket
-	GCDAsyncSocket *asyncSocket;
+	LPGCDAsyncSocket *asyncSocket;
 	
 	// Dispatch queues
 	dispatch_queue_t serverQueue;
@@ -52,7 +52,7 @@
 	BOOL isRunning;
 }
 
--(GCDAsyncSocket *)socket;
+-(LPGCDAsyncSocket *)socket;
 
 /**
  * Specifies the document root to serve files from.

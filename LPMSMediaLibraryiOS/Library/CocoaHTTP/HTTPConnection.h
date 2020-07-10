@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@class GCDAsyncSocket;
+@class LPGCDAsyncSocket;
 @class HTTPMessage;
 @class HTTPServer;
 @class WebSocket;
@@ -36,7 +36,7 @@
 @interface HTTPConnection : NSObject
 {
 	dispatch_queue_t connectionQueue;
-	GCDAsyncSocket *asyncSocket;
+	LPGCDAsyncSocket *asyncSocket;
 	HTTPConfig *config;
 	
 	BOOL started;
@@ -64,7 +64,7 @@
 	NSMutableArray *responseDataSizes;
 }
 
-- (id)initWithAsyncSocket:(GCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig;
+- (id)initWithAsyncSocket:(LPGCDAsyncSocket *)newSocket configuration:(HTTPConfig *)aConfig;
 
 - (void)start;
 - (void)stop;

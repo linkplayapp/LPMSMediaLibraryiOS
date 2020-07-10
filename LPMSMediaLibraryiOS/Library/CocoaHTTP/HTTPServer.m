@@ -1,5 +1,5 @@
 #import "HTTPServer.h"
-#import "GCDAsyncSocket.h"
+#import "LPGCDAsyncSocket.h"
 #import "HTTPConnection.h"
 #import "WebSocket.h"
 #import "HTTPLogging.h"
@@ -51,7 +51,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 		dispatch_queue_set_specific(connectionQueue, IsOnConnectionQueueKey, nonNullUnusedPointer, NULL);
 		
 		// Initialize underlying GCD based tcp socket
-		asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:serverQueue];
+		asyncSocket = [[LPGCDAsyncSocket alloc] initWithDelegate:self delegateQueue:serverQueue];
 		
 		// Use default connection class of HTTPConnection
 		connectionClass = [HTTPConnection self];
@@ -397,7 +397,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	
 }
 
--(GCDAsyncSocket *)socket
+-(LPGCDAsyncSocket *)socket
 {
     return asyncSocket;
 }
@@ -549,7 +549,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO; // | HTTP_LOG_FLAG_TRACE;
 	return [[HTTPConfig alloc] initWithServer:self documentRoot:documentRoot queue:connectionQueue];
 }
 
-- (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
+- (void)socket:(LPGCDAsyncSocket *)sock didAcceptNewSocket:(LPGCDAsyncSocket *)newSocket
 {
 	HTTPConnection *newConnection = (HTTPConnection *)[[connectionClass alloc] initWithAsyncSocket:newSocket
 	                                                                                 configuration:[self config]];
