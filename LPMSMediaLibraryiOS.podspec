@@ -45,6 +45,7 @@ TODO: SDK contains the number of local songs, singers and albums.
    ss.source_files = 'LPMSMediaLibraryiOS/Library/CocoaHTTP/**/*' 
    ss.dependency 'LPMSMediaLibraryiOS/TSLibraryImport'
    ss.dependency 'LPMSMediaLibraryiOS/Framework'
+   ss.dependency 'CocoaLumberjack'
   end 
 
   # s.resource_bundles = {
