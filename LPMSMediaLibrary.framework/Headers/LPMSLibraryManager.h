@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <LPMDPKit/LPMDPKit.h>
 
-@class GCDAsyncSocket;
+@class LPGCDAsyncSocket;
 @class LPMSLibraryPlayItem;
 
 @protocol LPMSMediaLibraryDelegate <NSObject>
