@@ -35,41 +35,41 @@ typedef void (^LPSearchMediaResultBlock)(LPPlayMusicList *musicListObj);
 
 @property (nonatomic, readonly) NSString *version;
 
-/// 是否在播放本地音乐
+/// Whether playing media music
 - (BOOL)getMediaMusicPlayState;
-// 建立HTTP server
+/// Start HTTP server
 - (void)startHTTPServer;
-// 停止HTTP server
--(void)stopHTTPServer;
+/// Stop HTTP server
+- (void)stopHTTPServer;
 
 /// Search for iTunes music
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchSongs:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索Album列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchAlbums:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索Artist列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchArtists:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索歌单列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchSonglists:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索专辑名称对应的专辑列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param album 专辑名称
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchAlbumSongs:(LPPlayHeader * _Nullable)header album:(NSString *)album completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索歌手对应的歌手列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param artist 歌手
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchArtistSongs:(LPPlayHeader * _Nullable)header artist:(NSString *)artist completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 /// 搜索歌单列表
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param songlist 歌单名称
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchSonglistSongs:(LPPlayHeader * _Nullable)header songlist:(NSString *)songlist completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
@@ -78,25 +78,25 @@ typedef void (^LPSearchMediaResultBlock)(LPPlayMusicList *musicListObj);
 
 /// 通过歌手获取该歌手对应的专辑列表
 /// @param item item 对象
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchAlbumWithItem:(LPMSLibraryPlayItem *)item header:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 
 /// 通过歌单名称获取对应的歌曲列表
 /// @param item item 对象
-/// @param header 为了以后分页准备，暂时可以传nil
+/// @param header In order to prepare for paging later, you can pass nil temporarily
 /// @param completionHandler 得到LPPlayMusicList对象
 - (void)searchListSongsWithItem:(LPMSLibraryPlayItem *)item header:(LPPlayHeader * _Nullable)header completionHandler:(LPSearchMediaResultBlock _Nullable)completionHandler;
 
-/// 控制Log输出
+/// Whether to open SDK log
 /// @param logOn 默认为NO
 - (void)setDebugLogOn:(BOOL)logOn;
 
-/// 为了copy本地音乐使用
+/// Mobile phone Media music array
 - (NSArray *)arrItunesMusic;
-/// 得到歌曲数目
+/// Media music count
 - (int)getCount;
-/// 更新播放时间
+
 - (void)updateDate;
 - (uint16_t)localPort;
 
